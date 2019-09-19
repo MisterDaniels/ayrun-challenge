@@ -2,6 +2,7 @@
 
     namespace App\Controller;
 
+    // Responses, Rotas e Controladores
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
@@ -10,8 +11,10 @@
     use App\Entity\Photo;
     use Doctrine\ORM\EntityManagerInterface;
 
+    // Apenas para coletar as informaçõe do banco de dados
     class DatabaseFiles extends AbstractController {
 
+        // Retorna um JSON da quantidade de fotos no banco        
         /**
          * @Route(
          *  "/api/photo",
@@ -28,6 +31,7 @@
 
         }
 
+        // Retorna um JSON de uma foto específica
         /**
          * @Route(
          *  "/api/photo/{id}",

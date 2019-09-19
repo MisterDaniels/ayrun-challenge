@@ -2,6 +2,7 @@
 
     namespace App\Controller;
 
+    // Requests, Responses, Rotas e Controladores
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Component\HttpFoundation\Request;
@@ -19,11 +20,14 @@
     use App\Entity\Photo;
     use Doctrine\ORM\EntityManagerInterface;
 
+    // Reference do .env file
     $dotenv = new Dotenv();
     $dotenv->load(__DIR__ . '/../../' . '/.env');
 
+    // Controller de todos os métodos para upload
     class UploadController extends AbstractController {
-
+        
+        // Faz o upload dos arquivos, recebe url, sizes e copies através da URL
         /**
          * @Route(
          *  "/upload", 
@@ -45,6 +49,8 @@
 
         }
 
+        // Faz o upload para o S3, só passa a url externa da imagem, 
+        // baixa a imagem no servidor e faz upload para o S3, depois deleta a referência local do servidor
         public function uploadToS3(string $url) {
 
             $filePath = __DIR__ . '/../../uploads/photo' . md5(uniqid(rand(), true)) . '.jpg';
@@ -74,6 +80,7 @@
 
         }
 
+        // Registra os dados como a url da S3 já feito o upload, os tamanhos das fotos e a quantidade de cópias
         public function databaseRegistrate(string $url, Array $sizes, string $copies): Response {
 
             $entityManager = $this->getDoctrine()->getManager();

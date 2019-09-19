@@ -33,6 +33,9 @@ Retorna a quantidade de fotos em JSON
 Retorna os dados da foto em JSON passando o id que quer buscar
 > localhost:8000/api/photo/{id}
 
+Fazer Upload de um arquivo
+> localhost:8000/upload/?url='URL-DA-IMAGEM'&sizes='SIZES'&copies='COPIES'/{id}
+
 Também é utilizado para retornar a homepage.
 
 ### Framework's Frontend
@@ -64,5 +67,8 @@ Rode o servidor do Symfony
 ```cmd
 symfony server:start
 ```
-___
+
+**Clique no botão Carregar Tamanho**
+
+**Pronto, agora é só clicar no botão Carregar**
 

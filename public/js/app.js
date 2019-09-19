@@ -1,4 +1,5 @@
 
+// Componente para mostras as fotos
 Vue.component('photo-image', {
     props: {
         photo: {
@@ -14,7 +15,7 @@ Vue.component('photo-image', {
     template:
         `<div class="row mt-5">
             <div class="col-sm">
-                <img src="https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg" class="img-thumbnail">
+                <img :src="photo.url" class="img-thumbnail">
             </div>
             <div class="col-sm">
                 <h3 id="image-url">{{ photo.url }}</h3>
@@ -26,6 +27,7 @@ Vue.component('photo-image', {
         </div>`
     ,
     methods: {
+        // Pega o preço baseado no tamanho
         getPrice: function (size) {
             switch(size.toString()) {
                 case "10x15":
@@ -41,6 +43,7 @@ Vue.component('photo-image', {
     }
 });
 
+// Handler da aplicação do Vue.js
 var app = new Vue ({
     el: '#app',
     data: {
@@ -49,18 +52,19 @@ var app = new Vue ({
         photosReadedTotal: 0
     },
     methods: {
-        getPhotosData: function (id) {
+        // Pega todas as fotos
+        getPhotosData: function () {
             
-            axios.get(this.requestUrl + id)
-                .then(response => {
-                    console.log(response.data);
-                    for (var i = 0; i < this.photosReadedTotal; i++) {
+            for (var i = 1; i <= this.photosReadedTotal; i++) {
+                axios.get(this.requestUrl + i)
+                    .then(response => {
                         this.photosReaded.push({"url":response.data.url, "sizes":response.data.sizes, "copies":response.data.copies});
-                    }
-            });
+                });
+            }
 
         },
-        getPhotosSize: function (id) {
+        // Pega a quantidade de fotos no banco de dados
+        getPhotosSize: function () {
             
             axios.get(this.requestUrl)
             .then(response => {

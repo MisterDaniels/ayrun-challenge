@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+// Classe Photo do Doctrine para conversar com o banco de dados
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhotoRepository")
  */
