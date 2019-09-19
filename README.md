@@ -72,3 +72,11 @@ symfony server:start
 
 **Pronto, agora é só clicar no botão Carregar**
 
+## Observações
+
+- O bucket do S3 está colocando as imagens como acesso privado, portanto, imagens feitas uploads não serão acessíveis, a não ser que seja feito manualmente. Faltou uma política para tornar elas públicas.
+- As requisições estão em tese, lentas, muito por conta do banco de dados ser dos eua.
+- É necessário esperar um tempo de execução ao clicar no botão **"Carregar Tamanho"**, verificar console que retorna o response em json, o botão **"Caregar"** é fundamental ser clicado depois de um tempo clicado no "Carregar Tamanho", vai carregar gradativamente graças ao Vue.js.
+- Não houve tempo hábil para o estudo dos filtros.
+- A ideia era colocar em um ambiente Nginx, porém, não houve tempo hábil para.
+
